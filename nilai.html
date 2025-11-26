@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nilai</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <a href="index.html">Biodata</a>
+    <a href="nilai.html">Grade</a>
+</header>
+
+<div class="container">
+    <h2 style="text-align:center; margin-bottom: 15px;">Hitung Nilai Akhir</h2>
+
+    <label>Mata Kuliah</label>
+    <select id="matkul">
+        <option>Pemrograman Web</option>
+        <option>Basis Data</option>
+        <option>Algoritma</option>
+        <option>Jaringan Komputer</option>
+    </select>
+
+    <label>Nilai Tugas (20%)</label>
+    <input type="number" id="tugas">
+
+    <label>Nilai Kuis (15%)</label>
+    <input type="number" id="kuis">
+
+    <label>Nilai UTS (25%)</label>
+    <input type="number" id="uts">
+
+    <label>Nilai UAS (35%)</label>
+    <input type="number" id="uas">
+
+    <label>Absensi (5%)</label>
+    <input type="number" id="absen">
+
+    <button onclick="hitung()">Hitung Nilai</button>
+
+    <h3 style="margin-top:20px;">Hasil:</h3>
+    <p><b>Nilai Akhir:</b> <span id="nilaiAkhir">-</span></p>
+    <p><b>Grade:</b> <span id="grade">-</span></p>
+</div>
+
+<footer>
+    Rafael Laurent W – NIM 202431085
+</footer>
+
+<script>
+function hitung() {
+    let tugas = Number(document.getElementById("tugas").value) * 0.20;
+    let kuis  = Number(document.getElementById("kuis").value) * 0.15;
+    let uts   = Number(document.getElementById("uts").value)  * 0.25;
+    let uas   = Number(document.getElementById("uas").value)  * 0.35;
+    let absen = Number(document.getElementById("absen").value) * 0.05;
+
+    let total = tugas + kuis + uts + uas + absen;
+    document.getElementById("nilaiAkhir").innerText = total.toFixed(2);
+
+    let grade = "D";
+    if (total > 81) grade = "A";
+    else if (total > 70) grade = "B";
+    else if (total > 60) grade = "C";
+
+    document.getElementById("grade").innerText = grade;
+}
+</script>
+</body>
+</html>
